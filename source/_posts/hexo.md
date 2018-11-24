@@ -1,5 +1,6 @@
 ---
 title: Hexo
+date: 2018-11-24 09:30:05
 ---
 ## Hexo参考
 >https://hexo.io/zh-cn/docs/
