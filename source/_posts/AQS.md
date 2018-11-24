@@ -215,7 +215,7 @@ private static boolean shouldParkAfterFailedAcquire(Node pred, Node node) {
          * need a signal, but don't park yet.  Caller will need to
          * retry to make sure it cannot acquire before parking.
          */
-        // 若前驱状态正常，则将其设置为SIGNAL，告诉前驱苟富贵勿相忘～记得unpark后面排队的小弟
+        // 若前驱状态正常，则将其设置为SIGNAL
         compareAndSetWaitStatus(pred, ws, Node.SIGNAL);
     }
     return false;
@@ -416,4 +416,4 @@ private void doReleaseShared() {
 ## ConditionObject(//TODO)
 
 # 总结
-本章基于源码分析了JAVA同步器框架AQS的实现原理。AQS基于模版方法模式提供了一套多线程并发争抢共享资源的逻辑框架，处理了获取失败、线程入队、阻塞、唤醒等逻辑，自定义同步器只需要选择性实现tryAcquire-tryRelease、tryAcquireShared-tryReleaseShared即可。其实代码中还提供了acquireInterruptibly（响应中断的资源获取）、tryAcquireNanos（响应超时）的方法，逻辑和介绍的几个方法差不多，只是加上了中断和超时抛异常的操作。
+本章基于源码分析了JAVA同步器框架AQS的实现原理。AQS基于模版方法模式提供了一套多线程并发争抢共享资源的逻辑框架，处理了获取失败、线程入队、阻塞、唤醒等逻辑，自定义同步器只需要选择性实现tryAcquire-tryRelease、tryAcquireShared-tryReleaseShared即可。其实AQS中还提供了acquireInterruptibly（响应中断的资源获取）、tryAcquireNanos（响应超时）的方法，逻辑和介绍的几个方法差不多~
